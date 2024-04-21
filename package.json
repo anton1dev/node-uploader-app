@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "start": "node src/server.js",
+    "lint": "eslint --config .eslintrc.js . --fix",
+    "format": "prettier --write \"./*.js\""
+  },
+  "devDependencies": {
+    "eslint": "^9.1.0",
+    "eslint-config-google": "^0.14.0",
+    "prettier": "^3.2.5"
+  }
+}
