@@ -3,6 +3,8 @@ const fs = require('node:fs/promises');
 const path = require('path');
 
 const DELIMITER = '-------';
+const PORT = process.env.PORT || 5050;
+const HOST = '0.0.0.0';
 
 
 const clearLine = (dir) => {
@@ -21,12 +23,10 @@ const moveCursor = (dx, dy) => {
   });
 };
 
-console.log();
+const socket = net.createConnection({ host: HOST, port: PORT }, async () => {
 
-const socket = net.createConnection({ host: '::1', port: 5050 }, async () => {
-
-  const filePath = process.argv[2];
-  const fileName = path.basename(filePath);
+  const fileName = process.argv[2];
+  const filePath = path.join(__dirname, fileName);
   const fileHandle = await fs.open(filePath, 'r');
   const fileReadStream = fileHandle.createReadStream();
   const fileSize = (await fileHandle.stat()).size;

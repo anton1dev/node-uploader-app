@@ -2,6 +2,8 @@ const net = require('net');
 const fs = require('node:fs/promises');
 
 const DELIMITER = '-------';
+const PORT = process.env.PORT || 5050;
+const HOST = '0.0.0.0';
 
 const server = net.createServer(() => { });
 
@@ -43,6 +45,6 @@ server.on('connection', (socket) => {
   })
 });
 
-server.listen(5050, '::1', () => {
+server.listen(PORT, HOST, () => {
   console.log('Uploader server opened on ', server.address());
 });
