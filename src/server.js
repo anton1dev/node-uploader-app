@@ -1,9 +1,9 @@
-const net = require('net');
-const fs = require('node:fs/promises');
+import net from 'net';
+import fs from 'node:fs/promises';
+
+import { HOST, PORT } from '../config.js';
 
 const DELIMITER = '-------';
-const PORT = process.env.PORT || 5050;
-const HOST = '0.0.0.0';
 
 const server = net.createServer(() => { });
 
